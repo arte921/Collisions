@@ -7,9 +7,9 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.math.pow
 
-var quality: Double = 10000.0
+var quality: Double = 100.0
 
-var bigCube: Cube = Cube(1000.0,100.0,-1.0,100.0.pow(8),1)
+var bigCube: Cube = Cube(1000.0,100.0,-1.0,100.0.pow(4),1)
 var smallCube: Cube = Cube(500.0,50.0,0.0,1.0,0)
 var totalCollisions: Int = 0
 var currentStep: Int = 0
