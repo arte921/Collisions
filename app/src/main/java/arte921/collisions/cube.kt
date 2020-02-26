@@ -1,3 +1,4 @@
+import arte921.collisions.quality
 import arte921.collisions.totalCollisions
 
 class Cube(xcoord: Double, width: Double, velocity: Double, mass: Double, id: Int) {
@@ -7,7 +8,6 @@ class Cube(xcoord: Double, width: Double, velocity: Double, mass: Double, id: In
     var m: Double = 0.0 //massa
     var u: Double = 0.0 //backup snelheid
     var id: Int = 0
-
 
     init {
         this.x = xcoord
@@ -35,8 +35,9 @@ class Cube(xcoord: Double, width: Double, velocity: Double, mass: Double, id: In
         }else{
             other.x = (other.x+other.w+this.x)/2-other.w
         }
-
         totalCollisions++
+
+
     }
 
     fun checkWall(){
@@ -44,11 +45,15 @@ class Cube(xcoord: Double, width: Double, velocity: Double, mass: Double, id: In
     }
 
     fun move(){
-        this.x += this.v * 0.01
+        this.x += this.v * 0.1 / quality
     }
 
     fun isDone(other: Cube): Boolean{
-        return other.v <= this.v && this.v > 0 && other.v > 0
+        return if(this.id > other.id){
+            other.v <= this.v && this.v > 0 && other.v > 0
+        }else{
+            this.v <= other.v && other.v > 0 && this.v > 0
+        }
     }
 
     fun collideWall(){
